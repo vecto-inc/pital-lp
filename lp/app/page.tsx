@@ -9,13 +9,6 @@ const capabilities = [
   ["勤務を確定する", "勤怠・評価管理", "勤怠申請、承認、差し戻し、勤務後の評価までつなぎます。"],
 ];
 
-const comparisonRows = [
-  ["候補者探し", "担当者の記憶から探す", "勤務実績、評価、スタッフ属性（住所・経験など）から探す"],
-  ["欠員対応", "担当者へ確認してから動く", "同じ案件画面から動く"],
-  ["引き継ぎ", "状況説明から始める", "対応中の状態から続ける"],
-  ["スタッフ連絡", "電話やチャットを追いかける", "アプリで回答を集める"],
-];
-
 const faqItems = [
   ["どのような会社・業種で利用できますか？", "案件ごとに必要な人数や条件に合わせて、スタッフや講師などを割り当てる事業者で利用できます。人材派遣、業務請負、イベント、販売、軽作業、試験監督、引っ越し、警備、清掃、物流、会場設営、研修・セミナー運営など、案件と人材を紐づけて手配するさまざまな業務に対応します。研修事業者では、研修内容、日時、場所、経験などの条件に合う講師の検索・アサインに活用できます。"],
   ["今のExcelを、すべて一度に変える必要がありますか？", "いいえ。まず案件登録と手配状況の共有から始め、スタッフアプリ、出勤確認、勤怠へ段階的に広げられます。"],
@@ -25,6 +18,24 @@ const faqItems = [
 ];
 
 function Arrow() { return <span aria-hidden="true">→</span>; }
+
+function PanicIcon() {
+  return <svg className="scenario-icon" viewBox="0 0 64 64" role="img" aria-label="焦る担当者のアイコン">
+    <circle cx="32" cy="32" r="30" fill="#fdeceb" stroke="#e73333" strokeWidth="2" />
+    <circle cx="23" cy="29" r="3" fill="#c63434" /><circle cx="41" cy="29" r="3" fill="#c63434" />
+    <path d="M20 44 Q32 34 44 44" fill="none" stroke="#c63434" strokeWidth="3" strokeLinecap="round" />
+    <path d="M47 14c4 5 4 10 0 14-4-4-4-9 0-14z" fill="#6fb8e6" />
+  </svg>;
+}
+
+function ReliefIcon() {
+  return <svg className="scenario-icon" viewBox="0 0 64 64" role="img" aria-label="安心した担当者のアイコン">
+    <circle cx="32" cy="32" r="30" fill="#eaf2ff" stroke="#3257cd" strokeWidth="2" />
+    <circle cx="23" cy="29" r="3" fill="#1d5687" /><circle cx="41" cy="29" r="3" fill="#1d5687" />
+    <path d="M20 40 Q32 50 44 40" fill="none" stroke="#1d5687" strokeWidth="3" strokeLinecap="round" />
+    <path d="M20 20l4 4M44 20l-4 4" stroke="#3257cd" strokeWidth="2.5" strokeLinecap="round" />
+  </svg>;
+}
 
 function OfficialLogo({ className = "" }: { className?: string }) {
   return <span className={`pital-official-logo ${className}`.trim()} aria-hidden="true" />;
@@ -91,23 +102,28 @@ function SiloIllustration() {
   </svg>;
 }
 
-function PitalIllustration() {
-  return <svg className="pital-vector solution-vector" viewBox="0 0 600 440" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="solution-title solution-desc">
-    <title id="solution-title">PITALが情報を会社の資産に変えるイメージ</title>
-    <desc id="solution-desc">案件、スタッフ、勤務実績、対応状況をPITALに集約し、複数のメンバーが共有しています。</desc>
-    <rect x="1" y="1" width="598" height="438" rx="14" fill="#f8fbff" stroke="#d9e6f3" strokeWidth="2" />
-    <path d="M150 100L248 182M150 218H238M150 336L248 258M450 218H505" fill="none" stroke="#91b8db" strokeWidth="3" strokeLinecap="round" />
-    <g><rect x="36" y="62" width="132" height="72" rx="10" fill="#fff" stroke="#d8e5f2" strokeWidth="2" /><text x="102" y="92" textAnchor="middle" className="svg-title">案件</text><text x="102" y="117" textAnchor="middle" className="svg-copy">条件・人数</text></g>
-    <g><rect x="36" y="182" width="132" height="72" rx="10" fill="#fff" stroke="#d8e5f2" strokeWidth="2" /><text x="102" y="212" textAnchor="middle" className="svg-title">スタッフ</text><text x="102" y="237" textAnchor="middle" className="svg-copy">経験・評価</text></g>
-    <g><rect x="36" y="302" width="132" height="72" rx="10" fill="#fff" stroke="#d8e5f2" strokeWidth="2" /><text x="102" y="332" textAnchor="middle" className="svg-title">勤務実績</text><text x="102" y="357" textAnchor="middle" className="svg-copy">履歴・勤怠</text></g>
-    <rect x="236" y="140" width="210" height="156" rx="24" fill="#3257cd" />
-    <rect x="273" y="154" width="136" height="88" rx="8" fill="#fff" />
-    <image href="/pital-logo.svg" x="273" y="154" width="136" height="88" preserveAspectRatio="xMidYMid meet" />
-    <text x="341" y="274" textAnchor="middle" className="svg-white-copy">情報を一元管理</text>
-    <g><circle cx="528" cy="175" r="31" fill="#fff" stroke="#cbdced" strokeWidth="2" /><circle cx="528" cy="166" r="9" fill="#2389ca" /><path d="M513 193c3-16 27-16 30 0" fill="#2389ca" /></g>
-    <g><circle cx="528" cy="252" r="31" fill="#fff" stroke="#cbdced" strokeWidth="2" /><circle cx="528" cy="243" r="9" fill="#3257cd" /><path d="M513 270c3-16 27-16 30 0" fill="#3257cd" /></g>
-    <circle cx="480" cy="218" r="17" fill="#2389ca" /><path d="M472 218l6 6 11-13" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-    <rect x="159" y="363" width="310" height="48" rx="8" fill="#fff" stroke="#cbdced" strokeWidth="2" /><text x="314" y="394" textAnchor="middle" className="svg-callout">会社の情報としてチームで共有</text>
+function ProductMockup() {
+  return <svg className="pital-vector mockup-vector" viewBox="0 0 600 440" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="mockup-title mockup-desc">
+    <title id="mockup-title">PITALの管理画面とスタッフアプリの画面イメージ</title>
+    <desc id="mockup-desc">左にPCの管理ダッシュボード、右にスマートフォンのスタッフアプリ画面を並べたイメージです。</desc>
+    <rect x="1" y="1" width="598" height="438" rx="16" fill="#f4f8fd" stroke="#dbe7f5" strokeWidth="2" />
+    <rect x="26" y="40" width="330" height="320" rx="12" fill="#fff" stroke="#d8e5f2" strokeWidth="2" />
+    <rect x="26" y="40" width="330" height="30" rx="12" fill="#eef3fb" />
+    <circle cx="44" cy="55" r="4" fill="#e73333" /><circle cx="58" cy="55" r="4" fill="#e6b957" /><circle cx="72" cy="55" r="4" fill="#3257cd" />
+    <text x="110" y="60" className="svg-copy">PITAL 管理画面</text>
+    <rect x="42" y="86" width="94" height="54" rx="9" fill="#eef3fb" /><text x="89" y="108" textAnchor="middle" className="svg-title">充足率</text><text x="89" y="130" textAnchor="middle" className="svg-callout">92%</text>
+    <rect x="146" y="86" width="94" height="54" rx="9" fill="#eef3fb" /><text x="193" y="108" textAnchor="middle" className="svg-title">対応待ち</text><text x="193" y="130" textAnchor="middle" className="svg-callout">3件</text>
+    <rect x="250" y="86" width="94" height="54" rx="9" fill="#eef3fb" /><text x="297" y="108" textAnchor="middle" className="svg-title">AI候補</text><text x="297" y="130" textAnchor="middle" className="svg-callout">5名</text>
+    <rect x="42" y="156" width="298" height="40" rx="8" fill="#f7fafd" stroke="#e6eef6" strokeWidth="1.5" /><text x="56" y="181" className="svg-copy">イベント設営／8月22日</text>
+    <rect x="42" y="204" width="298" height="40" rx="8" fill="#f7fafd" stroke="#e6eef6" strokeWidth="1.5" /><text x="56" y="229" className="svg-copy">軽作業スタッフ／8月23日</text>
+    <rect x="42" y="252" width="298" height="40" rx="8" fill="#eaf2ff" stroke="#c7ddf7" strokeWidth="1.5" /><text x="56" y="277" className="svg-copy">AIが代役候補を自動提示</text>
+    <rect x="390" y="34" width="150" height="320" rx="26" fill="#14284a" />
+    <rect x="400" y="56" width="130" height="276" rx="10" fill="#fff" />
+    <text x="465" y="80" textAnchor="middle" className="svg-title">スタッフアプリ</text>
+    <rect x="410" y="92" width="110" height="56" rx="8" fill="#eef3fb" /><text x="465" y="116" textAnchor="middle" className="svg-copy">本日の案件</text><text x="465" y="138" textAnchor="middle" className="svg-callout">出勤確認 ✓</text>
+    <rect x="410" y="160" width="110" height="44" rx="8" fill="#f7fafd" stroke="#e6eef6" strokeWidth="1.5" /><text x="465" y="187" textAnchor="middle" className="svg-copy">案件A 応募済み</text>
+    <rect x="410" y="212" width="110" height="44" rx="8" fill="#f7fafd" stroke="#e6eef6" strokeWidth="1.5" /><text x="465" y="239" textAnchor="middle" className="svg-copy">案件B 配置確定</text>
+    <rect x="410" y="270" width="110" height="32" rx="16" fill="#3257cd" /><text x="465" y="291" textAnchor="middle" className="svg-white-copy">応募する</text>
   </svg>;
 }
 
@@ -122,9 +138,13 @@ export default function Home() {
     <section className="linear-hero" id="top">
       <div className="linear-hero-copy">
         <p className="linear-breadcrumb">案件ごとにスタッフを手配する事業者向け <span>人材手配の属人化対策</span></p>
-        <h1>欠員より怖いのは、<br />代わりを探せる人が<br />いないこと。</h1>
+        <div className="hero-badges" role="list">
+          <span className="hero-badge" role="listitem"><i aria-hidden="true">🏅</i>今のExcelから移行可能</span>
+          <span className="hero-badge" role="listitem"><i aria-hidden="true">🏅</i>AIが候補者を自動リストアップ</span>
+        </div>
+        <h1>担当者が休んでも<br />案件が止まらない！<br />誰でも即座に最適な人材手配ができるSaaS<br />『PITAL』</h1>
         <i className="linear-rule" />
-        <p>急な欠勤、学生スタッフの卒業、担当者の休職・退職。<br />次に誰へ連絡するかが特定の人しか分からなければ、人材手配は簡単に止まります。</p>
+        <p className="hero-subcopy">欠員より怖いのは、代わりを探せる人がいないこと。急な欠勤、学生スタッフの卒業、担当者の休職・退職。次に誰へ連絡するかが特定の人しか分からなければ、人材手配は簡単に止まります。</p>
         <p><strong>PITALは、案件・スタッフ・勤務実績・対応状況を会社に残し、</strong><br />誰でも次の候補スタッフを探せる状態をつくります。</p>
         <div className="linear-hero-actions"><a className="linear-button primary" href="#contact">自社の属人化リスクを確認する <Arrow /></a><a className="linear-text-link" href="#about">PITALについて見る ↓</a></div>
       </div>
@@ -158,7 +178,7 @@ export default function Home() {
     <section className="message-section message-blue" id="about">
       <div className="message-number">04</div>
       <div className="message-copy"><p>解決</p><h2>だから、PITAL。</h2><div className="message-body"><p>PITALは、案件・スタッフ・応募・配置・出勤・勤怠を一つにつなぐ、案件ごとにスタッフを手配する事業者向けの業務管理SaaSです。</p><p>担当者の判断を機械へ置き換えるのではなく、判断に必要な情報と現在の進捗を、チーム全員が確認できる状態にします。</p></div></div>
-      <div className="message-figure"><PitalIllustration /></div>
+      <div className="message-figure"><ProductMockup /></div>
     </section>
 
     <section className="flow-section-linear">
@@ -174,12 +194,24 @@ export default function Home() {
 
     <section className="features-linear" id="features">
       <div className="linear-section-heading"><span>07 PITALでできること</span><h2>募集から勤怠まで、<br />一つの流れで管理する。</h2><p>現在提供中の機能です。</p></div>
-      <div className="features-linear-grid">{capabilities.map(([eyebrow,title,description],index)=><article key={title}><small>{String(index+1).padStart(2,"0")}</small><span>{eyebrow}</span><h3>{title}</h3><p>{description}</p></article>)}</div>
+      <div className="features-linear-grid">{capabilities.map(([eyebrow,title,description],index)=><article key={title} className={index===2?"feature-highlight":undefined}>{index===2&&<span className="feature-ribbon">PITALの最大の強み！</span>}<small>{String(index+1).padStart(2,"0")}</small><span>{eyebrow}</span><h3>{title}</h3><p>{description}</p></article>)}</div>
     </section>
 
     <section className="comparison-linear">
       <div className="linear-section-heading"><span>08 導入前後</span><h2>作業を増やすのではなく、<br />探す・聞く・待つを減らす。</h2></div>
-      <div className="comparison-linear-table"><div className="comparison-linear-head"><b>業務</b><b>これまで</b><b>PITAL導入後</b></div>{comparisonRows.map(([label,before,after])=><div className="comparison-linear-row" key={label}><strong>{label}</strong><span>{before}</span><span>{after}</span></div>)}</div>
+      <div className="scenario-compare">
+        <div className="scenario-card scenario-before">
+          <PanicIcon />
+          <span>よくある現場のシーン</span>
+          <p>「ベテランの◯◯さんが急な休み！明日のイベントスタッフの代役、誰に連絡すればいいか誰も分からない…！」</p>
+        </div>
+        <i className="scenario-arrow" aria-hidden="true">→</i>
+        <div className="scenario-card scenario-after">
+          <ReliefIcon />
+          <span>PITAL導入後</span>
+          <p>「PITALの『AI検索』を1クリックするだけ！条件に合う代役が一覧で表示され、数分で手配完了！」</p>
+        </div>
+      </div>
     </section>
 
     <section className="roadmap-linear">
@@ -194,7 +226,7 @@ export default function Home() {
 
     <section className="linear-contact" id="contact">
       <div className="linear-contact-copy"><OfficialLogo className="contact-logo" /><p>まずは、現在の手配業務を確認</p><h2>人材手配を、<br />一人の仕事にしない。</h2><p>どの情報が分散し、どの業務が特定の人へ集中しているかを整理します。</p><ul><li>✓ PITALの機能と画面イメージ</li><li>✓ 段階的な導入方法</li><li>✓ AIスタッフ検索と既存システム併用のご相談</li></ul></div>
-      <form className="linear-form" action="mailto:contact@example.com" method="post" encType="text/plain"><div><span>無料</span><h3>資料請求・導入相談</h3></div><label>会社名 <b>必須</b><input name="company" required placeholder="株式会社〇〇" /></label><label>メールアドレス <b>必須</b><input name="email" type="email" required placeholder="name@example.jp" /></label><label>ご相談内容 <span>任意</span><select name="purpose" defaultValue=""><option value="" disabled>選択してください</option><option>資料を見たい</option><option>オンラインデモを希望</option><option>属人化リスクを相談したい</option></select></label><label className="linear-consent"><input type="checkbox" required /> プライバシーポリシーに同意する</label><button type="submit">無料で相談する <Arrow /></button><small>送信時にメールソフトが開きます。公開時はお問い合わせシステムへ接続します。</small></form>
+      <form className="linear-form" action="mailto:contact@example.com" method="post" encType="text/plain"><div><span>無料</span><h3>資料請求・導入相談</h3></div><label>会社名 <b>必須</b><input name="company" required placeholder="株式会社〇〇" /></label><label>メールアドレス <b>必須</b><input name="email" type="email" required placeholder="name@example.jp" /></label><label>ご相談内容 <span>任意</span><select name="purpose" defaultValue=""><option value="" disabled>選択してください</option><option>資料を見たい</option><option>オンラインデモを希望</option><option>属人化リスクを相談したい</option></select></label><label className="linear-consent"><input type="checkbox" required /> プライバシーポリシーに同意する</label><p className="cta-microcopy">※無理な営業は一切いたしません<br />※今お使いの管理方法からの移行についてもご相談ください</p><button type="submit">【無料】デモ画面を見ながら自社の課題を相談する <Arrow /></button><small>送信時にメールソフトが開きます。公開時はお問い合わせシステムへ接続します。</small></form>
     </section>
 
     <footer className="linear-footer"><a className="brand" href="#top" aria-label="PITAL トップへ"><OfficialLogo className="footer-logo" /></a><p>案件・スタッフ・配置・出勤・勤怠をつなぐ業務管理SaaS。</p><small>© 2026 Vecto Inc.</small></footer>

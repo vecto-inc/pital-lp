@@ -133,3 +133,29 @@ body{font-family:Outfit,"Noto Sans JP",sans-serif,Meiryo;color:#1a1a1c;font-size
 /* Official PITAL logo supplied by the client. */
 .pital-official-logo{display:block;flex:0 0 auto;background:#fff url("/pital-logo.svg") center/contain no-repeat}.header-logo{width:108px;height:66px}.contact-logo{width:154px;height:100px;border-radius:8px;margin-bottom:18px}.footer-logo{width:100px;height:65px;border-radius:6px}
 @media(max-width:720px){.header-logo{width:86px;height:56px}.contact-logo{width:132px;height:86px}.footer-logo{width:92px;height:60px}}
+
+/* Hero authority badges */
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--gmo-line,#e6eef6);border-radius:999px;padding:8px 16px 8px 11px;font-size:16px;font-weight:700;color:var(--gmo-navy,#14284a);box-shadow:0 6px 16px rgba(8,43,77,.08)}
+.hero-badge i{font-style:normal;font-size:18px;line-height:1}
+.hero-subcopy{color:var(--gmo-muted,#616f8b)!important}
+@media(max-width:1050px){.hero-badges{justify-content:center}}
+
+/* Feature highlight ribbon (AI staff search) */
+.features-linear-grid article.feature-highlight{border:2px solid var(--gmo-red,#e73333);position:relative;box-shadow:0 14px 30px rgba(231,51,51,.16)}
+.feature-ribbon{position:absolute;top:-14px;right:18px;background:var(--gmo-red,#e73333);color:#fff;font-size:14px;font-weight:900;padding:7px 14px;border-radius:4px;box-shadow:0 8px 18px rgba(231,51,51,.32);white-space:nowrap}
+
+/* Concrete before/after scenario cards */
+.scenario-compare{display:grid;grid-template-columns:1fr 74px 1fr;align-items:stretch;max-width:1100px;margin:auto}
+.scenario-card{background:#fff;border:1px solid var(--gmo-line,#e6eef6);border-radius:14px;padding:34px 32px;display:flex;flex-direction:column;align-items:flex-start;gap:16px;box-shadow:0 10px 26px rgba(8,43,77,.06)}
+.scenario-icon{width:56px;height:56px;flex:0 0 auto}
+.scenario-card>span{font-size:16px;font-weight:900;color:var(--gmo-muted,#616f8b);letter-spacing:.05em}
+.scenario-before{border-color:#f3d3d1}
+.scenario-after{background:#f3f8ff;border-color:#c7ddf7}
+.scenario-after>span{color:var(--gmo-sky,#2389ca)}
+.scenario-card p{font-size:18px;line-height:1.9;font-weight:700;color:var(--gmo-navy,#14284a);margin:0}
+.scenario-arrow{display:grid;place-items:center;font-style:normal;font-size:26px;color:var(--gmo-sky,#2389ca)}
+@media(max-width:1050px){.scenario-compare{grid-template-columns:1fr}.scenario-arrow{padding:14px;transform:rotate(90deg)}}
+
+/* CTA microcopy */
+.cta-microcopy{font-size:16px;line-height:1.8;color:var(--gmo-muted,#616f8b);text-align:center;margin:2px 0 14px}
